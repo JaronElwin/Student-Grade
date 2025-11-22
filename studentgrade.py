@@ -1,11 +1,22 @@
-subject1 = float(input("Enter marks for Data Mining: "))
-subject2 = float(input("Enter marks for Oops: "))
-subject3 = float(input("Enter marks for Software Engineering: "))
-subject4 = float(input("Enter marks for Devops: "))
-subject5 = float(input("Enter marks for SSW: "))
+import sys
+
+if len(sys.argv) != 6:
+    print("Usage: python studentgrade.py <mark1> <mark2> <mark3> <mark4> <mark5>")
+    sys.exit(1)
+
+try:
+    subject1 = float(sys.argv[1])
+    subject2 = float(sys.argv[2])
+    subject3 = float(sys.argv[3])
+    subject4 = float(sys.argv[4])
+    subject5 = float(sys.argv[5])
+except ValueError:
+    print("Error: All inputs must be numbers.")
+    sys.exit(1)
 
 avg = (subject1 + subject2 + subject3 + subject4 + subject5) / 5
 
+print(f"\nCalculated Average Marks: {avg:.2f}")
 
 if avg >= 90:
     grade = "A"
@@ -18,4 +29,4 @@ elif avg >= 60:
 else:
     grade = "Fail"
 
-print(f"The grade is: {grade}")
+print(f"The final grade is: {grade}")
